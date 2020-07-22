@@ -1,9 +1,9 @@
 package com.ckp4.myPersonalLibraryapi.webservices.user;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.ckp4.myPersonalLibraryapi.webservices.book.Book;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -13,11 +13,23 @@ public class User {
     private Long id;
     private String login;
     private String password;
-    private String first_name;
-    private String last_name;
+    private String firstname;
+    private String lastname;
     private String picture;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<Book> books;
+
     public User() {
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public Long getId() {
@@ -44,20 +56,20 @@ public class User {
         this.password = password;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPicture() {
