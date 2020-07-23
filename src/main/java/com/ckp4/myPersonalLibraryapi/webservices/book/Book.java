@@ -1,6 +1,8 @@
 package com.ckp4.myPersonalLibraryapi.webservices.book;
 
 
+import com.ckp4.myPersonalLibraryapi.webservices.writer.Writer;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,12 +19,26 @@ public class Book {
     private Date readingDate;
 
     private String img;
+
+    @Column(columnDefinition = "text")
     private String summary;
 
-    @Column(name = "personal_summary")
+    @Column(name = "personal_summary", columnDefinition = "text")
     private String personalSummary;
 
+    @ManyToOne()
+    @JoinColumn(name="writer_id")
+    private Writer writer;
+
     public Book() {
+    }
+
+    public Writer getWriter() {
+        return writer;
+    }
+
+    public void setWriter(Writer writer) {
+        this.writer = writer;
     }
 
     public Long getId() {
