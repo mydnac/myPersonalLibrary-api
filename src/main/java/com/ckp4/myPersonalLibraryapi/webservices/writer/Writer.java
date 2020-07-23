@@ -1,9 +1,7 @@
 package com.ckp4.myPersonalLibraryapi.webservices.writer;
 
-import com.ckp4.myPersonalLibraryapi.webservices.book.Book;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 public class Writer {
@@ -11,12 +9,7 @@ public class Writer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstname;
-    private String lastname;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="writer_id")
-    private List<Book> books;
+    private String name;
 
     public Writer() {
     }
@@ -29,27 +22,11 @@ public class Writer {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setName(String name) {
+        this.name = name;
     }
 }
