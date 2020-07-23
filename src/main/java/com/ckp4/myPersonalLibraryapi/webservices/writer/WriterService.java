@@ -19,8 +19,7 @@ public class WriterService {
 
     public Writer updateWriter(Long id, Writer writer){
         Writer writerToUpdate = repository.findById(id).get();
-        writerToUpdate.setLastname(writer.getLastname());
-        writerToUpdate.setFirstname(writer.getFirstname());
+        writerToUpdate.setName(writer.getName());
         return repository.save(writerToUpdate);
     }
 
